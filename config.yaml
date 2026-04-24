@@ -1,0 +1,28 @@
+# accumulation_radar_config.yaml
+
+# 策略參數設定
+strategy:
+  # 收籌池掃描
+  min_sideways_days: 45      # 至少橫盤天數
+  max_range_pct: 80          # 橫盤期間最大價格波動 (%)
+  max_avg_vol_usd: 20000000  # 橫盤期間日均成交量上限 (USD)
+  min_data_days: 50          # 最低歷史K線天數要求
+  vol_breakout_mult: 3.0     # 視為「放量啟動」的成交量放大倍數
+
+  # 追多/埋伏 策略門檻
+  chase_min_px_chg: 3        # 追多策略：最低漲幅 (%)
+  chase_min_vol: 1000000     # 追多策略：最低成交量 (USD)
+  chase_max_fr: -0.005       # 追多策略：最高資金費率 (%) (必須為負)
+
+  ambush_min_score: 20       # 埋伏策略：最低總分要求
+  combined_min_score: 25     # 綜合策略：最低總分要求
+
+# 系統運作設定
+system:
+  max_concurrent_tasks: 50   # 最大併發連線數
+  binance_weight_limit: 1100 # 幣安每分鐘權重上限 (預設上限1200，留100緩衝)
+
+# 健康監控與通知設定
+health:
+  enable_alerts: true        # 是否開啟健康狀態異常通知
+  max_api_fails: 10          # 單次掃描容許的最大 API 失敗次數
